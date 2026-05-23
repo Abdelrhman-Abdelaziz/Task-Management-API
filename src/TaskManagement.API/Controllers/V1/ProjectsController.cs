@@ -1,3 +1,5 @@
+using Asp.Versioning;
+
 using MediatR;
 
 using Microsoft.AspNetCore.Authorization;
@@ -15,7 +17,8 @@ namespace TaskManagement.API.Controllers.V1;
 
 [ApiController]
 [Authorize]
-[Route("api/v1/projects")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/projects")]
 public sealed class ProjectsController(ISender sender) : ControllerBase
 {
     [HttpGet]
@@ -46,7 +49,7 @@ public sealed class ProjectsController(ISender sender) : ControllerBase
 
         return CreatedAtAction(
             nameof(GetById),
-            new { id = dto.Id },
+            new { id = dto.Id, version = "1.0" },
             ApiResponse<ProjectDto>.Ok(dto, "Project created."));
     }
 

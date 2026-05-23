@@ -1,3 +1,5 @@
+using Asp.Versioning;
+
 using MediatR;
 
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +12,8 @@ using TaskManagement.Application.Features.Auth.DTOs;
 namespace TaskManagement.API.Controllers.V1;
 
 [ApiController]
-[Route("api/v1/auth")]
+[ApiVersion("1.0")]
+[Route("api/v{version:apiVersion}/auth")]
 public sealed class AuthController(ISender sender) : ControllerBase
 {
     [HttpPost("register")]
