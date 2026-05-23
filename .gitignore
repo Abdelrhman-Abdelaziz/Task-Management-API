@@ -1,0 +1,76 @@
+# ---- .NET / Visual Studio ----
+bin/
+obj/
+out/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.userprefs
+.vs/
+.vscode/
+*.swp
+
+# ---- Build / publish ----
+publish/
+[Pp]ublish/
+[Dd]ebug/
+[Rr]elease/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+x64/
+x86/
+*.pdb
+*.dll.config
+*.exe
+*.dll
+
+# ---- Rider / IDE ----
+.idea/
+*.DotSettings.user
+
+# ---- Test results ----
+[Tt]est[Rr]esult*/
+*.trx
+*.coverage
+*.coveragexml
+coverage*.json
+coverage*.xml
+coverage*.info
+
+# ---- NuGet ----
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+
+# ---- EF Core ----
+# (keep migrations folder; ignore generated artifacts only)
+*.efbundle
+
+# ---- Secrets / local config ----
+appsettings.Development.json
+appsettings.*.local.json
+secrets.json
+*.pfx
+*.key
+
+# ---- OS junk ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Docker ----
+**/docker-compose.override.yml
+
+# ---- Logs ----
+*.log
+logs/
+
+# ---- Internal coordination / tracking files (not part of submission) ----
+AGENTS.md
+PLAN.md
+PROGRESS.md
+ARCHITECTURE.md
+docs/CONVENTIONS.md
+docs/DECISIONS.md
