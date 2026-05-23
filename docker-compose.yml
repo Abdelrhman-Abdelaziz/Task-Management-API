@@ -1,0 +1,31 @@
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: taskmanagement-db
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=${SA_PASSWORD:-YourStrong!Passw0rd}
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+
+  api:
+    build:
+      context: .
+      dockerfile: src/TaskManagement.API/Dockerfile
+    container_name: taskmanagement-api
+    depends_on:
+      - mssql
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=mssql;Database=TaskManagementDb;User Id=sa;Password=${SA_PASSWORD:-YourStrong!Passw0rd};TrustServerCertificate=true;
+      - JwtSettings__Secret=CHANGE-ME-use-a-long-secret-key-at-least-32-characters!
+      - JwtSettings__Issuer=TaskManagement.API
+      - JwtSettings__Audience=TaskManagement.Client
+      - JwtSettings__ExpirationInMinutes=60
+    ports:
+      - "8080:8080"
+
+volumes:
+  mssql_data:
