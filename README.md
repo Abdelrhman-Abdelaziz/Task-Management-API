@@ -23,10 +23,10 @@ Layered dependencies:
 
 ```mermaid
 flowchart TB
-	API[TaskManagement.API\nControllers | Middleware | DI | Swagger]
-	APP[TaskManagement.Application\nCQRS | DTOs | Validators | Behaviors]
-	INFRA[TaskManagement.Infrastructure\nEF Core | JWT | BCrypt | Services]
-	DOMAIN[TaskManagement.Domain\nEntities | Enums]
+	API[TaskManagement.API\nControllers, Middleware, DI, Swagger]
+	APP[TaskManagement.Application\nCQRS, DTOs, Validators, Behaviors]
+	INFRA[TaskManagement.Infrastructure\nEF Core, JWT, BCrypt, Services]
+	DOMAIN[TaskManagement.Domain\nEntities, Enums]
 
 	API --> APP
 	API --> INFRA
